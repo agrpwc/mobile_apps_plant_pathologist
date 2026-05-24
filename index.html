@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Sarabun', sans-serif;
+  font-size: 11px;
+  color: #111827;
+  background: #fff;
+}
+@page {
+  size: A4 landscape;
+  margin: 10mm 12mm;
+}
+.page {
+  width: 277mm;
+  background: #fff;
+}
+
+/* HEADER */
+.header {
+  background: #0A5C44;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 10px;
+}
+.header-left h1 { font-size: 15px; font-weight: 700; color: #fff; }
+.header-left p  { font-size: 9.5px; color: #9FE1CB; margin-top: 2px; }
+.header-badges  { display: flex; gap: 8px; }
+.badge {
+  border-radius: 5px; padding: 5px 10px; text-align: center;
+  font-size: 9px;
+}
+.badge-free     { background: #E8F5F0; color: #0A5C44; }
+.badge-freemium { background: #FEF3C7; color: #92400E; }
+.badge-paid     { background: #FEF2F2; color: #991B1B; }
+.badge span     { display: block; font-weight: 700; font-size: 11px; margin-top: 1px; }
+
+/* SUMMARY ROW */
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.sum-box {
+  border-radius: 5px;
+  padding: 7px 10px;
+}
+.sum-free     { background: #E8F5F0; border: 1px solid #1D9E75; }
+.sum-freemium { background: #FEF3C7; border: 1px solid #FCD34D; }
+.sum-paid     { background: #FEF2F2; border: 1px solid #FCA5A5; }
+.sum-title    { font-size: 9px; font-weight: 700; margin-bottom: 3px; }
+.sum-free .sum-title     { color: #065F46; }
+.sum-freemium .sum-title { color: #92400E; }
+.sum-paid .sum-title     { color: #991B1B; }
+.sum-tools    { font-size: 9px; line-height: 1.7; color: #374151; }
+
+/* ZONE */
+.zone { margin-bottom: 9px; }
+.zone-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 8px;
+  border-radius: 4px 4px 0 0;
+}
+.zone-a { background: #065F46; }
+.zone-b { background: #1e40af; }
+.zone-c { background: #92400E; }
+.zone-d { background: #374151; }
+.zone-e { background: #4C1D95; }
+.zone-label { font-size: 11px; font-weight: 700; color: #fff; }
+.zone-sub   { font-size: 9px; color: rgba(255,255,255,0.75); margin-left: 4px; }
+
+/* TABLE */
+table { width: 100%; border-collapse: collapse; }
+thead tr { background: #F3F4F6; }
+th {
+  font-size: 9px; font-weight: 600; color: #6B7280;
+  padding: 5px 7px; text-align: left;
+  border-bottom: 1.5px solid #D1D5DB;
+  border-right: 0.5px solid #E5E7EB;
+}
+th:last-child { border-right: none; }
+td {
+  padding: 5px 7px;
+  border-bottom: 0.5px solid #E5E7EB;
+  border-right: 0.5px solid #F3F4F6;
+  vertical-align: top;
+  line-height: 1.5;
+  font-size: 10px;
+}
+td:last-child { border-right: none; }
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #FAFAFA; }
+
+.app-name { font-weight: 600; font-size: 10.5px; color: #111827; }
+.app-sub  { font-size: 9px; color: #6B7280; margin-top: 1px; }
+
+.tag {
+  display: inline-block;
+  font-size: 8.5px; font-weight: 600;
+  padding: 1px 5px; border-radius: 3px;
+  margin-right: 2px; margin-bottom: 1px;
+}
+.tg { background: #D1FAE5; color: #065F46; }
+.tb { background: #DBEAFE; color: #1e40af; }
+.tp { background: #F3F4F6; color: #4B5563; border: 0.5px solid #D1D5DB; }
+
+.cost {
+  display: inline-block;
+  font-size: 9px; font-weight: 700;
+  padding: 2px 6px; border-radius: 3px;
+  white-space: nowrap;
+}
+.cost-free     { background: #D1FAE5; color: #065F46; }
+.cost-freemium { background: #FEF3C7; color: #92400E; }
+.cost-paid     { background: #FEE2E2; color: #991B1B; }
+
+/* FOOTER */
+.footer {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 0 0 6px 6px;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+.footer p { font-size: 8.5px; color: #9CA3AF; }
+.footer strong { color: #374151; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <h1>🌿 Mobile Apps สำหรับนักโรคพืช — แผนที่รวม</h1>
+    <p>เสวนา AI ใกล้ตัว สมาคมนักโรคพืชแห่งประเทศไทย 26 พฤษภาคม 2569</p>
+  </div>
+  <div class="header-badges">
+    <div class="badge badge-free">ค่าใช้จ่าย<span>ฟรี</span></div>
+    <div class="badge badge-freemium">ค่าใช้จ่าย<span>freemium</span></div>
+    <div class="badge badge-paid">ค่าใช้จ่าย<span>มีค่าใช้จ่าย</span></div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary-row">
+  <div class="sum-box sum-free">
+    <div class="sum-title">✅ เครื่องมือฟรีทั้งหมด</div>
+    <div class="sum-tools">HTML + GitHub Pages &nbsp;·&nbsp; Google Forms + Sheets + Looker &nbsp;·&nbsp; KoBoToolbox / ODK &nbsp;·&nbsp; LINE OA (พื้นฐาน)</div>
+  </div>
+  <div class="sum-box sum-freemium">
+    <div class="sum-title">⚡ Freemium (ฟรีระดับพื้นฐาน)</div>
+    <div class="sum-tools">Jotform (free 5 forms) &nbsp;·&nbsp; Glide (free 1 app) &nbsp;·&nbsp; Claude API (pay-per-use) &nbsp;·&nbsp; Zapier (free 100 tasks/mo)</div>
+  </div>
+  <div class="sum-box sum-paid">
+    <div class="sum-title">💳 มีค่าใช้จ่าย (subscription)</div>
+    <div class="sum-tools">Glide Pro (~$25/mo) &nbsp;·&nbsp; Softr Starter (~$49/mo) &nbsp;·&nbsp; Airtable Team (~$20/mo) &nbsp;·&nbsp; Zapier Pro (~$20/mo)</div>
+  </div>
+</div>
+
+<!-- ZONE A -->
+<div class="zone">
+  <div class="zone-header zone-a">
+    <span class="zone-label">A · คลินิกและห้องปฏิบัติการ</span>
+    <span class="zone-sub">Lab &amp; Clinic operations · ISO 17025 readiness</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%">ชื่อ App</th>
+        <th style="width:35%">ฟังก์ชันหลัก</th>
+        <th style="width:18%">เครื่องมือ</th>
+        <th style="width:16%">ผู้ใช้</th>
+        <th style="width:13%">ค่าใช้จ่าย</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="app-name">ฟอร์มนัดหมาย</div><div class="app-sub">Sample Intake Form</div></td>
+        <td>รับนัด · ข้อมูลพืชและอาการ · เลือกวิธีตรวจ · แสดงราคา/TAT อัตโนมัติ · สร้างรหัส PHC-XXXX</td>
+        <td>HTML + GitHub Pages</td>
+        <td><span class="tag tb">เกษตรกร</span><span class="tag tp">บริษัท</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Sample Acceptance</div><div class="app-sub">Checklist รับตัวอย่าง</div></td>
+        <td>เช็คลิสต์มาตรฐาน ISO · ปฏิเสธ/รับตัวอย่าง · บันทึก chain of custody · QR scan</td>
+        <td>Jotform / HTML</td>
+        <td><span class="tag tg">นักวินิจฉัย</span></td>
+        <td><span class="cost cost-freemium">freemium</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Bench Sheet</div><div class="app-sub">บันทึกผลแลบ</div></td>
+        <td>กรอกผลวินิจฉัย · ผลกล้อง/ELISA/PCR · peer review · ออก report PDF</td>
+        <td>HTML / Glide</td>
+        <td><span class="tag tg">นักวิทยาศาสตร์</span></td>
+        <td><span class="cost cost-freemium">freemium</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">LIMS Dashboard</div><div class="app-sub">ภาพรวมคลินิก</div></td>
+        <td>TAT tracking · sample status · KPI รายเดือน · export ISO report</td>
+        <td>Google Sheets + Looker</td>
+        <td><span class="tag tg">ผู้จัดการ</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ZONE B -->
+<div class="zone">
+  <div class="zone-header zone-b">
+    <span class="zone-label">B · งานในแปลง (Field Survey)</span>
+    <span class="zone-sub">ใช้กล้อง + GPS · รองรับ offline</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%">ชื่อ App</th>
+        <th style="width:35%">ฟังก์ชันหลัก</th>
+        <th style="width:18%">เครื่องมือ</th>
+        <th style="width:16%">ผู้ใช้</th>
+        <th style="width:13%">ค่าใช้จ่าย</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="app-name">Disease Survey</div><div class="app-sub">สำรวจโรคพืชในแปลง</div></td>
+        <td>บันทึก GPS · % incidence/severity · ถ่ายภาพแนบ · sync Google Sheets · ออก map รายงาน</td>
+        <td>KoBoToolbox</td>
+        <td><span class="tag tg">นักวิชาการ</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">AI Diagnosis Field</div><div class="app-sub">วินิจฉัยเบื้องต้นในแปลง</div></td>
+        <td>ถ่ายภาพ → AI วิเคราะห์โรค → แนะนำการจัดการ · ใช้งาน offline ได้</td>
+        <td>PlantVillage / Claude API</td>
+        <td><span class="tag tb">เกษตรกร</span><span class="tag tg">นักวิทย์</span></td>
+        <td><span class="cost cost-freemium">freemium</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Scouting Form</div><div class="app-sub">บันทึกสำรวจรายแปลง</div></td>
+        <td>ชื่อเกษตรกร · แปลงที่ · วันที่ · อาการ · % เสียหาย · คำแนะนำเบื้องต้น</td>
+        <td>KoBoToolbox / Google Form</td>
+        <td><span class="tag tg">นักวิชาการ</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ZONE C -->
+<div class="zone">
+  <div class="zone-header zone-c">
+    <span class="zone-label">C · หน่วยสำรวจและตรวจโรคของบริษัท</span>
+    <span class="zone-sub">Commercial plant health service · ลูกค้าเชิงพาณิชย์</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%">ชื่อ App</th>
+        <th style="width:35%">ฟังก์ชันหลัก</th>
+        <th style="width:18%">เครื่องมือ</th>
+        <th style="width:16%">ผู้ใช้</th>
+        <th style="width:13%">ค่าใช้จ่าย</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="app-name">Field Report App</div><div class="app-sub">รายงานนักวิชาการบริษัท</div></td>
+        <td>Template รายงาน · ระบุแปลงลูกค้า · ภาพ GPS · สร้าง PDF · ส่งอีเมลอัตโนมัติ</td>
+        <td>Glide / Softr</td>
+        <td><span class="tag tg">นักวิชาการ</span><span class="tag tp">supervisor</span></td>
+        <td><span class="cost cost-paid">มีค่าใช้จ่าย</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Sample Tracking</div><div class="app-sub">ติดตามตัวอย่างบริษัท</div></td>
+        <td>ส่งตัวอย่างไปแลบ · track status real-time · รับผล · แจ้งเตือนลูกค้า</td>
+        <td>Airtable + automation</td>
+        <td><span class="tag tp">เจ้าหน้าที่</span><span class="tag tb">ลูกค้า</span></td>
+        <td><span class="cost cost-paid">มีค่าใช้จ่าย</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Disease Reference</div><div class="app-sub">คลังโรคพืชบริษัท</div></td>
+        <td>ค้นหาโรคและแมลง · ภาพอาการ · วิธีจัดการ · offline · อัปเดตจาก admin</td>
+        <td>HTML / Glide</td>
+        <td><span class="tag tg">ทีมงาน</span></td>
+        <td><span class="cost cost-freemium">freemium</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ZONE D -->
+<div class="zone">
+  <div class="zone-header zone-d">
+    <span class="zone-label">D · เกษตรกรและบริการสาธารณะ</span>
+    <span class="zone-sub">End user · เน้นใช้งานง่าย ไม่ต้องมีความรู้เทคนิค</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%">ชื่อ App</th>
+        <th style="width:35%">ฟังก์ชันหลัก</th>
+        <th style="width:18%">เครื่องมือ</th>
+        <th style="width:16%">ผู้ใช้</th>
+        <th style="width:13%">ค่าใช้จ่าย</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="app-name">ขอตรวจโรคพืช</div><div class="app-sub">เกษตรกรส่งตัวอย่าง</div></td>
+        <td>นัดหมาย · กรอกข้อมูลพืช · ถ่ายภาพ · เลือกวิธีตรวจ · รับรหัส PHC · ติดตามผล</td>
+        <td>HTML + GitHub Pages</td>
+        <td><span class="tag tb">เกษตรกร</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">ปรึกษาโรคพืช AI</div><div class="app-sub">Chatbot วินิจฉัยเบื้องต้น</div></td>
+        <td>พิมพ์/ถ่ายภาพอาการ · AI ให้คำแนะนำเบื้องต้น · ถ้ายากส่งต่อคลินิก</td>
+        <td>LINE OA + Claude API</td>
+        <td><span class="tag tb">เกษตรกร</span></td>
+        <td><span class="cost cost-freemium">freemium</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Result Portal</div><div class="app-sub">รับผลการวินิจฉัย</div></td>
+        <td>Login ด้วย Sample ID · ดูผล PDF · ประวัติการส่ง · แจ้งเตือนเมื่อมีผล</td>
+        <td>HTML / LINE</td>
+        <td><span class="tag tb">เกษตรกร</span><span class="tag tp">บริษัท</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Disease Alert</div><div class="app-sub">แจ้งเตือนโรคระบาด</div></td>
+        <td>Push notification เมื่อพบโรคในพื้นที่ · แผนที่ระบาด · คำแนะนำป้องกัน</td>
+        <td>LINE OA / Zapier</td>
+        <td><span class="tag tb">เกษตรกร</span></td>
+        <td><span class="cost cost-freemium">freemium</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ZONE E -->
+<div class="zone">
+  <div class="zone-header zone-e">
+    <span class="zone-label">E · การเรียนการสอนและวิจัย</span>
+    <span class="zone-sub">Academic · นิสิต อาจารย์ นักวิจัย</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:18%">ชื่อ App</th>
+        <th style="width:35%">ฟังก์ชันหลัก</th>
+        <th style="width:18%">เครื่องมือ</th>
+        <th style="width:16%">ผู้ใช้</th>
+        <th style="width:13%">ค่าใช้จ่าย</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="app-name">Lab Practical App</div><div class="app-sub">แบบบันทึกปฏิบัติการ</div></td>
+        <td>นิสิตบันทึกผลกล้อง · ภาพ · sketch · สรุปรายงาน → อาจารย์ให้คะแนนใน app</td>
+        <td>Jotform / Google Form</td>
+        <td><span class="tag tp">นิสิต</span><span class="tag tg">อาจารย์</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Disease Database</div><div class="app-sub">ฐานข้อมูลโรคพืชไทย</div></td>
+        <td>รวบรวมข้อมูลจากคลินิก · ค้นหาตามพืช/อาการ · ภาพอ้างอิง · เผยแพร่เป็น open data</td>
+        <td>Airtable / Softr</td>
+        <td><span class="tag tg">นักวิจัย</span><span class="tag tp">สาธารณะ</span></td>
+        <td><span class="cost cost-paid">มีค่าใช้จ่าย</span></td>
+      </tr>
+      <tr>
+        <td><div class="app-name">Research Data Collector</div><div class="app-sub">เก็บข้อมูลวิจัยแปลง</div></td>
+        <td>Protocol template · บันทึก treatment · วัด incidence/severity · export SPSS/R</td>
+        <td>KoBoToolbox / ODK</td>
+        <td><span class="tag tg">นักวิจัย</span></td>
+        <td><span class="cost cost-free">ฟรี</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p><strong>คลินิกสุขภาพพืช กำแพงแสน</strong> · ภาควิชาโรคพืช คณะเกษตร กำแพงแสน มหาวิทยาลัยเกษตรศาสตร์ · โทร. 034-351-893</p>
+  <p>ทุก App ในตารางนี้สร้างได้โดยไม่ต้องเขียนโค้ด · ใช้ AI + no-code tools เท่านั้น</p>
+</div>
+
+</div>
+</body>
+</html>
